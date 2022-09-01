@@ -1,0 +1,49 @@
+body {
+	padding: 10px;
+	background: url("./static/images/yarn_bkg.jpg");
+	  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+#addYarnSection {
+	margin-top: 20px;
+	padding:5px;
+	background-color: LemonChiffon;
+	border-radius: 25px;
+}
+
+#addPatternSection {
+	margin-top: 20px;
+	padding:5px;
+	background-color: LightSteelBlue;
+	border-radius: 25px;
+}
+
+#yarnlist {
+	margin: 10px;
+	padding: 10px;
+	background-color: Ivory;
+	border-radius: 25px;
+}
+
+#patternlist {
+	margin: 10px;
+	padding: 10px;
+	background-color: MintCream;
+	border-radius: 25px;
+}
+
+#mainIndex {
+	margin: 10px;
+	padding: 10px;
+	background-color: Ivory;
+	border-radius: 25px;
+	text-align: center;
+}
+
+#noteArea {
+	margin: 10px;
+	padding: 10px;
+	background-color: White;
+	border-radius: 25px;
+}
