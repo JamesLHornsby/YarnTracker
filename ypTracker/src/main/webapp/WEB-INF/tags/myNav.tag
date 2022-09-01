@@ -18,7 +18,9 @@
 						Patterns</a></li>
 				<li class="nav-item"><a class="nav-link" href="/ypm">Matcher</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/notePage">Your Notes</a>
+				<li class="nav-item"><a class="nav-link" href="/notePage">View Notes</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/addNotes">Add Notes</a>
 				</li>
 
 			</ul>

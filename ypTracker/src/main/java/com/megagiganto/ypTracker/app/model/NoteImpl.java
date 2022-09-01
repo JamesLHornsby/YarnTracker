@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.megagiganto.ypTracker.api.model.Note;
 
 @Component
-public class NoteImpl implements Note {
+public class NoteImpl {
 	
 	String contents;
 
@@ -19,5 +19,10 @@ public class NoteImpl implements Note {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	@Override
+	public String toString() {
+		return "NoteImpl [contents=" + contents + "]";
+	}
+
 
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="ypm"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -17,25 +17,15 @@
 <link rel="stylesheet" href="resources/style.css">
 
 <meta charset="ISO-8859-1">
-<title>Add Notes Here!</title>
+<title>Results!</title>
 </head>
 <body>
 
-		<ypm:myNav />
-		
+	<ypm:myNav />
+
 	<div id="noteArea">
-		<form:form method="POST" action="addNewNote" modelAttribute="note">
-			<table>
-				
-				<tr>
-					<td><label for="note1"> Note</label></td>
-					<td><form:input id="note1" path="contents" /></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Submit" /></td>
-				</tr>
-			</table>
-		</form:form>
+		<p class="lead">Your note is: ${note.contents}</p>
 	</div>
+
 </body>
 </html>

@@ -17,25 +17,22 @@
 <link rel="stylesheet" href="resources/style.css">
 
 <meta charset="ISO-8859-1">
-<title>Add Notes Here!</title>
+<title>View Notes Here!</title>
 </head>
 <body>
 
 		<ypm:myNav />
 		
-	<div id="noteArea">
-		<form:form method="POST" action="addNewNote" modelAttribute="note">
-			<table>
-				
-				<tr>
-					<td><label for="note1"> Note</label></td>
-					<td><form:input id="note1" path="contents" /></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Submit" /></td>
-				</tr>
-			</table>
-		</form:form>
+	<!-- Notes of Yarn to buy -->
+<div id="noteArea">
+	<div >
+		<p>Here are your notes:</p>
+		<c:forEach items="${notes}" var="note">
+			<tr>
+				<td>${note.contents}</td>
+			</tr>
+		</c:forEach>
+	</div>
 	</div>
 </body>
 </html>
