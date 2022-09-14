@@ -7,5 +7,7 @@ import com.megagiganto.ypTracker.app.model.NoteImpl;
 public interface NoteService {
 
 	List<NoteImpl> getAllNotes();
+	
+	NoteImpl addNote(NoteImpl note);
 
 }

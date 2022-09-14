@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public interface Yarn {
 
-	Long getId();
+	Integer getId();
 
-	void setId(Long id);
+	void setId(Integer id);
 
 	String getColor();
 

@@ -22,7 +22,7 @@ public class PatternServiceImpl implements PatternService{
 	}
 
 	@Override
-	public Pattern findPattern(Long id) {
+	public Pattern findPattern(Integer id) {
 		return patternDAO.findPatternById(id);
 	}
 
@@ -38,7 +38,7 @@ public class PatternServiceImpl implements PatternService{
 	}
 
 	@Override
-	public Object deletePattern(Long id) {
-		return patternDAO.deletePattern(id);
+	public void deletePattern(Integer id) {
+		patternDAO.deletePattern(id);
 	}
 }

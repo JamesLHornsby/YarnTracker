@@ -38,7 +38,7 @@ public class MatcherController {
 	//Read One
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> findYarn(@PathVariable String id) {
-		Yarn yarn = yarnService.findYarn(Long.valueOf(id));
+		Yarn yarn = yarnService.findYarn(Integer.valueOf(id));
 		if(yarn.getId() == null) {
 			return new ResponseEntity<>("Not Found", HttpStatus.OK);
 		}
@@ -53,27 +53,12 @@ public class MatcherController {
 		return new ResponseEntity<>((YarnImpl) savedYarn, HttpStatus.CREATED);
 	}
 	
-	//Update
-	@PutMapping(value = "/yarn/{id}")
-	public ResponseEntity<Yarn> updateYarn(@PathVariable("id") long id, @RequestBody Yarn yarn) {
-		Yarn currentYarn = yarnService.findYarn(id);
-		if (currentYarn == null) {
-			return new ResponseEntity<Yarn>(HttpStatus.NOT_FOUND);
-		}
-		
-		currentYarn.setColor(yarn.getColor());
-		currentYarn.setLocation(yarn.getLocation());
-		currentYarn.setSize(yarn.getSize());
-		currentYarn.setLength(yarn.getLength());
-		
-		yarnService.updateYarn(currentYarn);
-		return new ResponseEntity<Yarn>(currentYarn, HttpStatus.OK);
-	}
 	
 	//Delete
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<?> deleteYarn(@PathVariable String id) {
-		return new ResponseEntity<>(yarnService.deleteYarn(Long.valueOf(id)), HttpStatus.OK);
+		yarnService.deleteYarn(Integer.valueOf(id));
+		return new ResponseEntity<>(yarnService.findAllYarn(), HttpStatus.OK);
 	}
 	
 

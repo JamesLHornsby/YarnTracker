@@ -6,21 +6,41 @@ import org.springframework.stereotype.Component;
 
 import com.megagiganto.ypTracker.api.model.Yarn;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Component
+@Entity(name="YARN")
+@Table(name="yarn")
 public class YarnImpl implements Yarn{
 	
-	Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	Integer id;
+	
+	@Column(name = "color")
 	String color;
+	
+	@Column(name = "location")
 	String location;
+	
+	@Column(name = "size")
 	Integer size;
+	
+	@Column(name = "length")
 	BigDecimal length;
 	
 	@Override
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	@Override
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	@Override

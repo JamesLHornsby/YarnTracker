@@ -1,13 +1,20 @@
 package com.megagiganto.ypTracker.app.daoimpl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Repository;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-import com.google.common.collect.ImmutableList;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.megagiganto.ypTracker.api.dao.YarnDAO;
 import com.megagiganto.ypTracker.api.model.Yarn;
 import com.megagiganto.ypTracker.app.model.YarnImpl;
@@ -15,78 +22,56 @@ import com.megagiganto.ypTracker.app.model.YarnImpl;
 @Repository
 public class YarnDAOImpl implements YarnDAO {
 	
-	private static Long yarnId = Long.valueOf(0);
-	private static List<YarnImpl> yarns = new ArrayList<>();
-
-	static {
-		yarns = populateYarns();
-	}
+	@Autowired
+	private SessionFactory sessionFactory;
 	
-	private static List<YarnImpl> populateYarns() {
-		YarnImpl yarn1 = new YarnImpl();
-		yarn1.setId(++yarnId);
-		yarn1.setColor("white");
-		yarn1.setLocation("Under Table");
-		yarn1.setSize(4);
-		yarn1.setLength(BigDecimal.valueOf(.75));
-		
-		YarnImpl yarn2 = new YarnImpl();
-		yarn2.setId(++yarnId);
-		yarn2.setColor("black");
-		yarn2.setLocation("In craft box");
-		yarn2.setSize(4);
-		yarn2.setLength(BigDecimal.valueOf(1.5));
-		
-		yarns.add(yarn1);
-		yarns.add(yarn2);
-		
-		return yarns;
-		
-	}
-	
+	//CriteriaQuery
+	@Transactional
 	@Override
 	public List<Yarn> findAllYarn() {
-		return ImmutableList.copyOf(yarns);
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Yarn> cr = builder.createQuery(Yarn.class);
+		Root<YarnImpl> root = cr.from(YarnImpl.class);
+		cr.select(root);
+		
+		Query<Yarn> query = session.createQuery(cr);
+		List<Yarn> results = query.getResultList();
+		return results;
 	}
 
+	@Transactional
 	@Override
-	public Yarn findYarnById(Long id) {
-		for(Yarn yarn : yarns) {
-			if(yarn.getId()==id) {
-				return yarn;
-			}
-		}
-		return null;
+	public Yarn findYarnById(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.byId(Yarn.class).load(id);
 	}
 
+	@Transactional
 	@Override
 	public Yarn saveYarn(Yarn yarn) {
-		if (yarn.getId()!= null) {
-			Yarn existingYarn = findYarnById(yarn.getId());
-			if(existingYarn != null) {
-				yarns = yarns.stream()
-						.map(y ->y.getId().equals(yarn.getId()) ? (YarnImpl) yarn : y)
-						.collect(Collectors.toList());
-				return yarn;
-			}
+		Session session = sessionFactory.getCurrentSession();
+		
+		if (yarn.getId()!=null) {	//existing yarn
+			session.update(yarn);
+			
+		} else {	//new yarn
+			Integer id = (Integer) session.save(yarn);
+			yarn.setId(id);
 		}
-		
-		
-		yarn.setId(++yarnId);
-		yarns.add((YarnImpl) yarn);
 		return yarn;
 	}
-
+	
+	@Transactional
 	@Override
-	public Object deleteYarn(Long id) {
-		return yarns.removeIf(yarn -> id.equals(yarn.getId()));
+	public void deleteYarn(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		Object persistentInstance = session.load(YarnImpl.class, id);
+		if (persistentInstance !=null) {
+			session.remove(persistentInstance);
+		}
+		
 	}
 
-	@Override
-	public void updateYarn(Yarn yarn) {
-		Yarn foundYarn = findYarnById(yarn.getId());
-		yarns = yarns.stream().map(y -> y.getId().equals(yarn.getId()) ? (YarnImpl) yarn : y)
-				.collect(Collectors.toList());
-	}
 
 }

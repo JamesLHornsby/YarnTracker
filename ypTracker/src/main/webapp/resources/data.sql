@@ -1,0 +1,1 @@
+INSERT INTO MEGAGIGANTO.NOTE (id, contents) values (1, 'Buy more beige yarn.');
