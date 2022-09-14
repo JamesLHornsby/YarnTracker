@@ -25,8 +25,8 @@
 		<!-- Not Navbar -->
 		<h1>Keep track of your yarn! Keep track of your patterns! See how
 			they match up!</h1>
-		<a href="/yarn">Add Your Yarn!</a> <span> * </span> <a href="/pattern">Add
-			Your Patterns!</a> <span> * </span> <a href="/ypm">See how they match
+		<a href="/ypTracker/yarn">Add Your Yarn!</a> <span> * </span> <a href="/ypTracker/pattern">Add
+			Your Patterns!</a> <span> * </span> <a href="/ypTracker/ypm">See how they match
 			up!</a>
 	</div>
 </body>

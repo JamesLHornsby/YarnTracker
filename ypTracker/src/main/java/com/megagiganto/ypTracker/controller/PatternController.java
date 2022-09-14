@@ -38,7 +38,7 @@ public class PatternController {
 	//Read One
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> findPattern(@PathVariable String id) {
-		Pattern pattern = patternService.findPattern(Long.valueOf(id));
+		Pattern pattern = patternService.findPattern(Integer.valueOf(id));
 		if(pattern.getId() == null) {
 			return new ResponseEntity<>("Not Found", HttpStatus.OK);
 		}
@@ -55,7 +55,7 @@ public class PatternController {
 	
 	//Update
 	@PutMapping(value = "/pattern/{id}")
-	public ResponseEntity<Pattern> updatePattern(@PathVariable("id") long id, @RequestBody Pattern pattern) {
+	public ResponseEntity<Pattern> updatePattern(@PathVariable("id") Integer id, @RequestBody Pattern pattern) {
 		Pattern currentPattern = patternService.findPattern(id);
 		if (currentPattern == null) {
 			return new ResponseEntity<Pattern>(HttpStatus.NOT_FOUND);
@@ -72,7 +72,8 @@ public class PatternController {
 	//Delete
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<?> deletePattern(@PathVariable String id) {
-		return new ResponseEntity<>(patternService.deletePattern(Long.valueOf(id)), HttpStatus.OK);
+		patternService.deletePattern(Integer.valueOf(id));
+		return new ResponseEntity<>(patternService.findAllPatterns(), HttpStatus.OK);
 	}
 	
 

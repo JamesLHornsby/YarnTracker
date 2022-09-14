@@ -9,11 +9,11 @@ public interface PatternService {
 
 	List<Pattern> findAllPatterns();
 	
-	Pattern findPattern(Long id);
+	Pattern findPattern(Integer id);
 	
 	Pattern savePattern(PatternImpl pattern);
 
 	void updatePattern(Pattern currentPattern);
 
-	Object deletePattern(Long valueOf);
+	void deletePattern(Integer valueOf);
 }

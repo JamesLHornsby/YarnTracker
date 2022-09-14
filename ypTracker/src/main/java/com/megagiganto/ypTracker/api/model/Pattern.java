@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface Pattern {
 
-	Long getId();
+	Integer getId();
 
-	void setId(Long id);
+	void setId(Integer id);
 
 	String getName();
 

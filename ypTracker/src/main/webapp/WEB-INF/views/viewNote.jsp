@@ -26,11 +26,10 @@
 	<!-- Notes of Yarn to buy -->
 <div id="noteArea">
 	<div >
-		<p>Here are your notes:</p>
+		<p class="lead">Here are your notes:</p>
 		<c:forEach items="${notes}" var="note">
-			<tr>
-				<td>${note.contents}</td>
-			</tr>
+			
+				<div id="noteContents">${note.contents}</div>
 		</c:forEach>
 	</div>
 	</div>

@@ -47,3 +47,7 @@ body {
 	background-color: White;
 	border-radius: 25px;
 }
+
+#noteContents {
+	padding: 10px;
+}

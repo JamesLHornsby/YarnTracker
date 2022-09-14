@@ -22,7 +22,7 @@ public class YarnServiceImpl implements YarnService {
 	}
 	
 	@Override
-	public Yarn findYarn(Long id) {
+	public Yarn findYarn(Integer id) {
 		return yarnPatternDAO.findYarnById(id);
 	}
 
@@ -32,16 +32,9 @@ public class YarnServiceImpl implements YarnService {
 	}
 
 	@Override
-	public Object deleteYarn(Long id) {
-		return yarnPatternDAO.deleteYarn(id);
+	public void deleteYarn(Integer id) {
+		yarnPatternDAO.deleteYarn(id);
 	}
-
-	@Override
-	public void updateYarn(Yarn yarn) {
-		yarnPatternDAO.updateYarn(yarn);
-		
-	}
-
 
 
 }

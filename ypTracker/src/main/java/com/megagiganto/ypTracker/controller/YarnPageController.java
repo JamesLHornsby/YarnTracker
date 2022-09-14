@@ -1,15 +1,18 @@
 package com.megagiganto.ypTracker.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
+import com.megagiganto.ypTracker.api.model.Note;
 import com.megagiganto.ypTracker.api.service.NoteService;
 import com.megagiganto.ypTracker.app.model.NoteImpl;
 
@@ -48,6 +51,8 @@ public class YarnPageController {
 		model.addAttribute("displayheader",true);
 		return "viewNote";
 	}
+	
+	
 	//calls addNotes
 	@GetMapping(value = "/addNotes")
 	public String addNotesPage(Model model) {
@@ -55,14 +60,14 @@ public class YarnPageController {
 		model.addAttribute("displayheader",true);
 		return "addNote";
 	}
-	
-	
 	//and gets form ready
-	@RequestMapping("/addNewNote")
-	public String showResultPage(@ModelAttribute("note") NoteImpl note) {
-		//System.out.println("Hey, in show Result page: "+note);
-		return "result-page";
-	}
+	@PostMapping("/addNewNote")
+	public ModelAndView addNote(@Valid @ModelAttribute("note") NoteImpl note, Errors errors, ModelAndView mv,
+				RedirectAttributes redirectAttributes){
+					noteService.addNote(note);
+					mv.addObject("note", note);
+					mv.setViewName("result-page");
+					return mv;
+				}
 	
-
 }

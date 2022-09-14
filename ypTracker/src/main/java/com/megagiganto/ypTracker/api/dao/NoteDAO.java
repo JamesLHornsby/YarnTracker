@@ -8,4 +8,6 @@ public interface NoteDAO {
 
 	List<NoteImpl> getAllNotes();
 
+	NoteImpl addNote(NoteImpl note);
+
 }

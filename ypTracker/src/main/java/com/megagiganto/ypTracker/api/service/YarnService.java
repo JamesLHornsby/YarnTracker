@@ -9,13 +9,11 @@ public interface YarnService {
 
 	List<Yarn> findAllYarn();
 	
-	Yarn findYarn(Long id);
+	Yarn findYarn(Integer id);
 
 	Yarn saveYarn(YarnImpl yarn);
-	
-	void updateYarn(Yarn currentYarn);
 
-	Object deleteYarn(Long valueOf);
+	void deleteYarn(Integer valueOf);
 
 	
 
