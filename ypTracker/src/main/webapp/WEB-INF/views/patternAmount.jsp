@@ -37,7 +37,7 @@
 			<!-- Pattern adding form -->
 
 			<div id="addPatternSection" class="formcontainer">
-				<form ng-submit="ctrl.createPattern()" id="addPatternForm"
+				<form ng-submit="ctrl.submitPattern()" id="addPatternForm"
 					name="addPatternForm" class="form-horizontal">
 					<div class="panel-heading">
 						<span class="lead">Add Your Patterns!</span>
@@ -94,7 +94,7 @@
 									class="btn btn-primary btn-sm">
 								<button type="reset" id="clear"
 									ng-click="
-									ctrl.reset()"
+									ctrl.resetPattern()"
 									class="btn btn-warning btn-sm"
 									ng-disabled="addPatternForm$pristine">Reset Form</button>
 

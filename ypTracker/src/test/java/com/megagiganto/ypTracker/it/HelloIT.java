@@ -1,4 +1,4 @@
-package com.megagiganto.ypTracker.it;
+/*package com.megagiganto.ypTracker.it;
 
 import static org.junit.Assert.*;
 
@@ -37,3 +37,4 @@ public class HelloIT{
 	}
 
 }
+*/

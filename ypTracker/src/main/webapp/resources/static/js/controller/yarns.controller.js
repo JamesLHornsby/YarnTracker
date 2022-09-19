@@ -4,7 +4,7 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 		['YarnPatternMatcherService', function(YarnPatternMatcherService) {
 			var self = this;
 			self.yarn = {
-				id : '',
+				id : null,
 				color: '',
 				location: ''
 			};
@@ -19,11 +19,11 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 				});
 			}
 			//submit to create or update...
-			self.submit = function() {
-				if(self.yarn.id===null) {
-					createYarn();
+			self.submitYarn = function() {
+				if(self.yarn.id==null) {
+					self.createYarn();
 				} else {
-					updateYarn(self.yarn, self.yarn.id);
+					self.updateYarn(self.yarn, self.yarn.id);
 				}
 			}
 			
@@ -40,18 +40,17 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 			self.createYarn = function() {
 				return YarnPatternMatcherService.createYarn(self.yarn).then(function() {
 					self.fetchAllYarn();
-					//self.reset();
-				});
+				}).then(function() { self.resetYarn()});
 			}
 			//update...
 			self.updateYarn = function(yarn, id) {
 				YarnPatternMatcherService.updateYarn(yarn, id)
 				.then(
-					fetchAllYarn,
+					self.fetchAllYarn,
 					function(errResponse) {
 						console.error('Error while updating Yarn');
 					}
-				);
+				).then(function() { self.resetYarn()});
 			}
 			
 
@@ -63,7 +62,7 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 			}
 			
 			//clear button
-			self.reset = function() {
+			self.resetYarn = function() {
 				self.yarn = {};
 			}
 			
@@ -72,7 +71,7 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 	/* Patterns below... */
 			
 			self.pattern = {
-				id : '',
+				id : null,
 				name: '',
 				size: '',
 				colors: ''
@@ -88,11 +87,11 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 				});
 			}
 			//submit to create or update...
-			self.submit = function() {
-				if(self.pattern.id===null) {
-					createPattern();
+			self.submitPattern = function() {
+				if(self.pattern.id==null) {
+					self.createPattern();
 				} else {
-					updatePattern(self.pattern, self.pattern.id);
+					self.updatePattern(self.pattern, self.pattern.id);
 				}
 			}
 			
@@ -110,17 +109,17 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 			self.createPattern = function() {
 				return YarnPatternMatcherService.createPattern(self.pattern).then(function() {
 					self.fetchAllPatterns();
-				});
+				}).then(function() { self.resetPattern()});
 			}
 			//update...
-			self.updatePattern = function(yarn, id) {
+			self.updatePattern = function(pattern, id) {
 				YarnPatternMatcherService.updatePattern(pattern, id)
 				.then(
-					fetchAllPatterns,
+					self.fetchAllPatterns,
 					function(errResponse) {
 						console.error('Error while updating Patterns');
 					}
-				);
+				).then(function() { self.resetPattern()});
 			}
 			
 			self.deletePattern = function(pattern) {
@@ -130,7 +129,7 @@ angular.module('YarnPatternMatcherApp').controller('YarnPatternMatcherController
 			}
 			
 			//clear button
-			self.reset = function() {
+			self.resetPattern = function() {
 				self.pattern = {};
 			}
 			

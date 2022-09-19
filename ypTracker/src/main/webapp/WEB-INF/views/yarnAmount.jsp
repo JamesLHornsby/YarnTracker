@@ -35,7 +35,7 @@
 		<div class="panel panel-default">
 
 			<div id="addYarnSection" class="formcontainer">
-				<form ng-submit="ctrl.createYarn()" id="addYarnForm"
+				<form ng-submit="ctrl.submitYarn()" id="addYarnForm"
 					name="addYarnForm" class="form-horizontal">
 					<div class="panel-heading">
 						<span class="lead">Add Your Yarn!</span>
@@ -97,11 +97,7 @@
 								<input type="submit"
 									value="{{!ctrl.yarn.id ? 'Add' : 'Update'}}"
 									class="btn btn-primary btn-sm">
-								<button type="reset" id="clear"
-									ng-click="
-									ctrl.reset()"
-									class="btn btn-warning btn-sm"
-									ng-disabled="addYarnForm$pristine">Reset Form</button>
+								<button ng-click="ctrl.resetYarn()" id="clear" type="reset" class="btn btn-warning btn-sm">Reset Form</button>
 							</div>
 						</div>
 					</div>
