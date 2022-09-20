@@ -2,21 +2,19 @@ package com.megagiganto.ypTracker.api.service;
 
 import java.util.List;
 
-import com.megagiganto.ypTracker.api.model.Yarn;
-import com.megagiganto.ypTracker.app.model.YarnImpl;
+import com.megagiganto.ypTracker.app.model.Yarn;
 
 public interface YarnService {
 
 	List<Yarn> findAllYarn();
 	
-	Yarn findYarn(Integer id);
+	Yarn findYarnById(Integer id);
 
-	Yarn saveYarn(YarnImpl yarn);
+	void saveYarn(Yarn yarn);
 
-	void deleteYarn(Integer valueOf);
-
+	void updateYarn(Yarn yarn);
 	
+	void deleteYarnById(Integer valueOf);
 
-	
 
 }

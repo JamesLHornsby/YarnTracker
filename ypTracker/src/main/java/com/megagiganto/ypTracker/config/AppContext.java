@@ -24,16 +24,7 @@ public class AppContext {
     @Autowired
     private Environment environment;
 
-//    @Bean
-//    public LocalSessionFactoryBean sessionFactory() {
-//        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-//        sessionFactory.setDataSource(dataSource());
-//        sessionFactory.setPackagesToScan(new String[] {
-//            "com.megagiganto.ypTracker"
-//        });
-//        sessionFactory.setHibernateProperties(hibernateProperties());
-//        return sessionFactory;
-//    }
+
     @Bean
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
