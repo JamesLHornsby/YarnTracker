@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class WebTest {
+public class WebTestYarn {
 
 	public WebDriver driver = new ChromeDriver();
 
@@ -44,39 +44,39 @@ public class WebTest {
 	@Test(priority = 1)
 	public void openAppClickLink() {
 		driver.get("http://www.localhost:8080/ypTracker/");
-		driver.findElement(By.cssSelector("#yarnLink")).click();
+		driver.findElement(By.id("yarnLink")).click();
 	}
 
 	// fail to submit yarn
 	@Test(priority = 2)
 	public void yarnInsertUnsuccessfully() {
-		driver.findElement(By.cssSelector("#ysize")).sendKeys("4");
-		driver.findElement(By.cssSelector("#ylength")).sendKeys("1.5");
-		driver.findElement(By.cssSelector("#submit")).sendKeys(Keys.ENTER);
-		List<WebElement> yarnColor = driver.findElements(By.cssSelector("#addedYarnColor"));
+		driver.findElement(By.id("ysize")).sendKeys("4");
+		driver.findElement(By.id("ylength")).sendKeys("1.5");
+		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
+		List<WebElement> yarnColor = driver.findElements(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.size(), 0);
 	}
 
 	@Test(priority = 3)
 	public void checkClearButton() {
-		driver.findElement(By.cssSelector("#ycolor")).sendKeys("red");
-		driver.findElement(By.cssSelector("#clear")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id("ycolor")).sendKeys("red");
+		driver.findElement(By.id("clear")).sendKeys(Keys.ENTER);
 
-		WebElement yarnColor = driver.findElement(By.cssSelector("#ycolor"));
+		WebElement yarnColor = driver.findElement(By.id("ycolor"));
 		Assert.assertEquals(yarnColor.getText(), "");
 	}
 
 	// successfully submit yarn
 	@Test(priority = 3)
 	public void yarnInsertSuccessfully() {
-		driver.findElement(By.cssSelector("#ycolor")).sendKeys("red");
-		driver.findElement(By.cssSelector("#ysize")).sendKeys("4");
-		driver.findElement(By.cssSelector("#ylength")).sendKeys("1.5");
-		driver.findElement(By.cssSelector("#location")).sendKeys("basement shelves");
-		driver.findElement(By.cssSelector("#submit")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id("ycolor")).sendKeys("red");
+		driver.findElement(By.id("ysize")).sendKeys("4");
+		driver.findElement(By.id("ylength")).sendKeys("1.5");
+		driver.findElement(By.id("location")).sendKeys("basement shelves");
+		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
 		
 
-		WebElement yarnColor = driver.findElement(By.cssSelector("#addedYarnColor"));
+		WebElement yarnColor = driver.findElement(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.getText(), "red");
 	}
 
@@ -86,17 +86,17 @@ public class WebTest {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 		//wait until the edit button is ready
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#editButton")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("editButton")));
 		
-		driver.findElement(By.cssSelector("#editButton")).sendKeys(Keys.ENTER);
-		driver.findElement(By.cssSelector("#ycolor")).sendKeys("orange");
-		driver.findElement(By.cssSelector("#submit")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id("editButton")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id("ycolor")).sendKeys("orange");
+		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
 		
-		//wait until the object is listed (the deleteButton is ready
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#submit")));
+		//wait until the object is listed (the deleteButton is ready)
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")));
 		
 		//assert that addedYarnColor has been changed to redorange
-		WebElement yarnColor = driver.findElement(By.cssSelector("#addedYarnColor"));
+		WebElement yarnColor = driver.findElement(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.getText(), "redorange");
 
 	}
@@ -106,12 +106,12 @@ public class WebTest {
 	public void yarnDelete() {
 		// wait for "remove" to be clickable then click.
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement removeButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#deleteButton")));
+		WebElement removeButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")));
 		removeButton.sendKeys(Keys.ENTER);
-		// wait until submit is clickable then check the value of #addedYarnColor, which
+		// wait until submit is clickable then check the value of addedYarnColor, which
 		// shouldn't exist
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#submit")));
-		List<WebElement> yarnColor = driver.findElements(By.cssSelector("#addedYarnColor"));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("submit")));
+		List<WebElement> yarnColor = driver.findElements(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.size(), 0);
 
 	}

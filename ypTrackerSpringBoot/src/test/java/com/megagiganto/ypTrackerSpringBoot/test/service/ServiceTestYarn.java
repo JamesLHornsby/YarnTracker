@@ -61,7 +61,7 @@ public class ServiceTestYarn extends AbstractTestNGSpringContextTests {
 			
 		when(yarnRepository.save(any(Yarn.class))).thenReturn(yarn);
 		Yarn yarnReturn = yarnService.saveYarn(yarn);
-		AssertJUnit.assertEquals(yarnReturn.getId(), yarn.getId());
+		AssertJUnit.assertEquals(yarnReturn, yarn);
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ public class ServiceTestYarn extends AbstractTestNGSpringContextTests {
 		yarn.setColor("Blue");
 		Yarn savedYarn = yarnService.updateYarn(yarn);
 		
-		assertEquals(savedYarn.getColor(), yarn.getColor());
+		assertEquals(savedYarn, yarn);
 	
 	}
 	

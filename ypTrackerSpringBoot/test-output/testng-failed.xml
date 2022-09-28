@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.megagiganto.ypTrackerSpringBoot.test.web.WebTest">
+      <class name="com.megagiganto.ypTrackerSpringBoot.test.web.WebTestYarn">
         <methods>
-          <include name="afterTest"/>
-          <include name="yarnDelete"/>
+          <include name="yarnUpdateSuccessfully"/>
           <include name="beforeTest"/>
+          <include name="afterTest"/>
         </methods>
-      </class> <!-- com.megagiganto.ypTrackerSpringBoot.test.web.WebTest -->
+      </class> <!-- com.megagiganto.ypTrackerSpringBoot.test.web.WebTestYarn -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
