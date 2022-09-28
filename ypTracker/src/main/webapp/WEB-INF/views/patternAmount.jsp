@@ -89,7 +89,7 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 							<div class="form-actions floatRight">
-								<input type="submit"
+								<input type="submit" id="submit"
 									value="{{!ctrl.pattern.id ? 'Add' : 'Update'}}"
 									class="btn btn-primary btn-sm">
 								<button type="reset" id="clear"
@@ -122,14 +122,14 @@
 						<tbody>
 							<tr ng-repeat="currentPattern in ctrl.patterns">
 								<td><span ng-bind="currentPattern.id"></span></td>
-								<td><span ng-bind="currentPattern.name"></span></td>
+								<td><span id="addedPatternName" ng-bind="currentPattern.name"></span></td>
 								<td><span ng-bind="currentPattern.size"></span></td>
 								<td><span ng-bind="currentPattern.colors"></span></td>
 								<td>
-									<button type="button"
+									<button type="button" id="editButton"
 										data-ng-click="ctrl.editPattern(currentPattern.id)"
 										class="btn btn-success custom-width">Edit</button>
-									<button type="button"
+									<button type="button" id="deleteButton"
 										data-ng-click="ctrl.deletePattern(currentPattern)"
 										class="btn btn-danger custom-width">Remove</button>
 								</td>

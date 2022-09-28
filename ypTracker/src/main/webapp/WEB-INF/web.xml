@@ -27,7 +27,7 @@
 
 
 	
-	<servlet>
+<!-- 	<servlet>
 		<servlet-name>h2</servlet-name>
 		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
@@ -35,7 +35,7 @@
 	<servlet-mapping>
 		<servlet-name>h2</servlet-name>
 		<url-pattern>/h2/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	<session-config>
 		<session-timeout>30</session-timeout>

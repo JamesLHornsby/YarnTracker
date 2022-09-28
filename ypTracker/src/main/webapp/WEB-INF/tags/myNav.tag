@@ -12,15 +12,15 @@
 				<li class="nav-item active"><a class="nav-link" href="/ypTracker">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/ypTracker/yarn">Your
+				<li class="nav-item"><a class="nav-link" id="yarnLink" href="/ypTracker/yarn">Your
 						Yarn</a></li>
-				<li class="nav-item"><a class="nav-link" href="/ypTracker/pattern">Your
+				<li class="nav-item"><a class="nav-link" id="patternLink" href="/ypTracker/pattern">Your
 						Patterns</a></li>
-				<li class="nav-item"><a class="nav-link" href="/ypTracker/ypm">Matcher</a>
+				<li class="nav-item"><a class="nav-link" id="matcherLink" href="/ypTracker/ypm">Matcher</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/ypTracker/notePage">View Notes</a>
+				<li class="nav-item"><a class="nav-link" id="viewNoteLink" href="/ypTracker/notePage">View Notes</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/ypTracker/addNotes">Add Notes</a>
+				<li class="nav-item"><a class="nav-link" id="addNoteLink" href="/ypTracker/addNotes">Add Notes</a>
 				</li>
 
 			</ul>

@@ -31,9 +31,5 @@ public class Note{
 	public Note() {
 		
 	}
-	
-	public String toString() {
-		return "NoteImpl [contents=" + contents + "]";
-	}
 
 }

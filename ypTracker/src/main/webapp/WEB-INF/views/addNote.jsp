@@ -32,7 +32,7 @@
 					<td><form:input id="note1" path="contents" /></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Submit" id="submit"/></td>
 				</tr>
 			</table>
 		</form:form>

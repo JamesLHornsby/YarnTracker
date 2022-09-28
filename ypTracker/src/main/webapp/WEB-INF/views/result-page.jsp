@@ -24,7 +24,7 @@
 	<ypm:myNav />
 
 	<div id="noteArea">
-		<p class="lead">Your note is: ${note.contents}</p>
+		<p class="lead" id="noteResult">Your note is: ${note.contents}</p>
 	</div>
 
 </body>

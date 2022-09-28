@@ -37,13 +37,6 @@ public class Yarn{
 	@Column(name = "length")
 	BigDecimal length;
 	
-
-	
-	public String toString() {
-		return "YarnModelImpl [id=" + id + ", color=" + color + ", location=" + location + ", size=" + size
-				+ ", length=" + length + "]";
-	}
-	
 	
 	
 }
