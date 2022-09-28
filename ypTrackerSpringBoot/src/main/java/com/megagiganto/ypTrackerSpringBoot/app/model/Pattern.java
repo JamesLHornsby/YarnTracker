@@ -33,11 +33,6 @@ public class Pattern {
 	
 	@Column(name = "colors")
 	String colors;
-
-	@Override
-	public String toString() {
-		return "Pattern [id=" + id + ", name=" + name + ", size=" + size + ", colors=" + colors + "]";
-	}
 	
 
 

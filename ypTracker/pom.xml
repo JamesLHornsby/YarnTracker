@@ -88,13 +88,13 @@
 		</dependency>
 
 
-		<!-- Logging -->
+		<!-- Logging 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>-->
 
 		<!-- JSR-330 for @Inject -->
 		<dependency>
@@ -102,7 +102,7 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -114,7 +114,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.8</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -170,13 +170,13 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.6.3.Final</version>
 		</dependency>
-		<!-- H2 -->
+		<!-- H2 
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.165</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -193,6 +193,9 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
+
+
+
 	</dependencies>
 
 	<repositories>
@@ -202,6 +205,8 @@
 			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
 		</repository>
 	</repositories>
+
+
 
 	<build>
 		<finalName>${project.name}</finalName>
@@ -214,6 +219,7 @@
 					<port>8080</port>
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>

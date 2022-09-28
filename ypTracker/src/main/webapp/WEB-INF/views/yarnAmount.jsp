@@ -94,7 +94,7 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 							<div class="form-actions floatRight">
-								<input type="submit"
+								<input type="submit" id="submit"
 									value="{{!ctrl.yarn.id ? 'Add' : 'Update'}}"
 									class="btn btn-primary btn-sm">
 								<button ng-click="ctrl.resetYarn()" id="clear" type="reset" class="btn btn-warning btn-sm">Reset Form</button>
@@ -123,14 +123,14 @@
 					<tbody>
 						<tr ng-repeat="currentYarn in ctrl.yarns">
 							<td><span ng-bind="currentYarn.id"></span></td>
-							<td><span ng-bind="currentYarn.color"></span></td>
+							<td><span id="addedYarnColor" ng-bind="currentYarn.color"></span></td>
 							<td><span ng-bind="currentYarn.location"></span></td>
 							<td><span ng-bind="currentYarn.size"></span></td>
 							<td><span ng-bind="currentYarn.length"></span></td>
 							<td>
-								<button type="button" data-ng-click="ctrl.edit(currentYarn.id)"
+								<button type="button" id="editButton" data-ng-click="ctrl.edit(currentYarn.id)"
 									class="btn btn-success custom-width">Edit</button>
-								<button type="button"
+								<button type="button" id="deleteButton"
 									data-ng-click="ctrl.deleteYarn(currentYarn)"
 									class="btn btn-danger custom-width">Remove</button>
 							</td>
