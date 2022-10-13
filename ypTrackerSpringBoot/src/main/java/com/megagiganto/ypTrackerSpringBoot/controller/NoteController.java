@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.megagiganto.ypTrackerSpringBoot.app.service.NoteService;
 import com.megagiganto.ypTrackerSpringBoot.app.model.Note;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8081"})
+//@CrossOrigin(origins = "http://localhost:8081")
 @Controller
 @RequestMapping("/api")
 public class NoteController {

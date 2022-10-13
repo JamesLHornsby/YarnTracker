@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.megagiganto.ypTrackerSpringBoot.app.service.YarnService;
 import com.megagiganto.ypTrackerSpringBoot.app.model.Yarn;
 
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/api")
 public class YarnController {
