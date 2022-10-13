@@ -43,7 +43,7 @@ public class WebTestYarn {
 	// Opening app and clicking link
 	@Test(priority = 1)
 	public void openAppClickLink() {
-		driver.get("http://www.localhost:8080/ypTracker/");
+		driver.get("http://localhost:4200/");
 		driver.findElement(By.id("yarnLink")).click();
 	}
 
@@ -69,12 +69,14 @@ public class WebTestYarn {
 	// successfully submit yarn
 	@Test(priority = 3)
 	public void yarnInsertSuccessfully() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		// wait until the submit button is ready
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("submit")));
 		driver.findElement(By.id("ycolor")).sendKeys("red");
 		driver.findElement(By.id("ysize")).sendKeys("4");
 		driver.findElement(By.id("ylength")).sendKeys("1.5");
 		driver.findElement(By.id("location")).sendKeys("basement shelves");
 		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
-		
 
 		WebElement yarnColor = driver.findElement(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.getText(), "red");
@@ -84,18 +86,18 @@ public class WebTestYarn {
 	@Test(priority = 4)
 	public void yarnUpdateSuccessfully() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		
-		//wait until the edit button is ready
+
+		// wait until the edit button is ready
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("editButton")));
-		
+
 		driver.findElement(By.id("editButton")).sendKeys(Keys.ENTER);
 		driver.findElement(By.id("ycolor")).sendKeys("orange");
 		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
-		
-		//wait until the object is listed (the deleteButton is ready)
+
+		// wait until the object is listed (the deleteButton is ready)
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")));
-		
-		//assert that addedYarnColor has been changed to redorange
+
+		// assert that addedYarnColor has been changed to redorange
 		WebElement yarnColor = driver.findElement(By.id("addedYarnColor"));
 		Assert.assertEquals(yarnColor.getText(), "redorange");
 

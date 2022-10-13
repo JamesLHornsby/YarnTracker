@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.megagiganto.ypTrackerSpringBoot.app.service.PatternService;
 import com.megagiganto.ypTrackerSpringBoot.app.model.Pattern;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8081"})
+//@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class PatternController {

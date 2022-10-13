@@ -43,7 +43,7 @@ public class WebTestPattern {
 	// Opening app and clicking link
 	@Test(priority = 1)
 	public void openAppClickLink() {
-		driver.get("http://www.localhost:8080/ypTracker/");
+		driver.get("http://localhost:4200/home/");
 		driver.findElement(By.id("patternLink")).click();
 	}
 
@@ -51,7 +51,7 @@ public class WebTestPattern {
 	@Test(priority = 2)
 	public void patternInsertUnsuccessfully() {
 		driver.findElement(By.id("psize")).sendKeys("4");
-		driver.findElement(By.id("colors")).sendKeys("1.5");
+		driver.findElement(By.id("pcolors")).sendKeys("1.5");
 		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
 		List<WebElement> patternName = driver.findElements(By.id("addedPatternName"));
 		Assert.assertEquals(patternName.size(), 0);
@@ -71,7 +71,7 @@ public class WebTestPattern {
 	public void patternInsertSuccessfully() {
 		driver.findElement(By.id("pname")).sendKeys("Stormtrooper");
 		driver.findElement(By.id("psize")).sendKeys("4");
-		driver.findElement(By.id("colors")).sendKeys("White, Black");
+		driver.findElement(By.id("pcolors")).sendKeys("White, Black");
 		driver.findElement(By.id("submit")).sendKeys(Keys.ENTER);
 		
 

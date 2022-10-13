@@ -43,7 +43,7 @@ public class WebTestNotes {
 	// Opening app and clicking link
 	@Test(priority = 1)
 	public void openAppClickLink() {
-		driver.get("http://www.localhost:8080/ypTracker/");
+		driver.get("http://localhost:4200/home/");
 		driver.findElement(By.id("addNoteLink")).click();
 	}
 
@@ -54,8 +54,8 @@ public class WebTestNotes {
 		driver.findElement(By.id("submit")).click();
 		
 		//check the results
-		WebElement noteResult = driver.findElement(By.id("noteResult"));
-		String expected = "Your note is: Here is a note!";
+		WebElement noteResult = driver.findElement(By.id("noteContents"));
+		String expected = "Here is a note!";
 		Assert.assertEquals(noteResult.getText(), expected);
 	}
 
